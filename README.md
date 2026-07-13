@@ -42,7 +42,7 @@ El entorno virtual requiere el simulador oficial f1tenth_gym_ros. Abre una termi
   # 3. Compilar el simulador
   cd ~/f1tenth_ws
   colcon build --symlink-install
-
+  ```
 ## 🚀 Instalación de este Repositorio
 Ahora vamos a integrar los algoritmos de control y los mapas modificados en tu sistema.
 
