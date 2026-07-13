@@ -157,5 +157,4 @@ En esta fase, introducimos un mapa modificado con 5 obstáculos fijos y un segun
 
 ## 🎥 Demostración en Video
 A continuación se incluye el link donde se observa al algoritmo esquivando los obstáculos fijos y rebasando exitosamente al vehículo dinámico mediante cálculos reactivos del LiDAR.
-
-https://youtu.be/ivDVL_ag3T0
+https://youtu.be/JQpwE1VWQqg
