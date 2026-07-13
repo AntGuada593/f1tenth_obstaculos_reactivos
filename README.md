@@ -60,7 +60,7 @@ Ahora vamos a integrar los algoritmos de control y los mapas modificados en tu s
   cd ~/f1tenth_ws
   colcon build --symlink-install
   source install/setup.bash
-
+  ```
 ## 🟢 Fase 1: FTG Inicial (Pista Despejada)
 
 Esta fase ejecuta la primera versión del algoritmo en el circuito original de Budapest.
@@ -70,16 +70,17 @@ Esta fase ejecuta la primera versión del algoritmo en el circuito original de B
 
   ```bash
   gedit ~/f1tenth_ws/src/f1tenth_gym_ros/config/sim.yaml
-  
+  ```
   Asegúrate de que la configuración tenga 1 solo agente y apunte al mapa original:
-
+  ```
   num_agent: 1
   map_path: 'Budapest_map'
-  
+  ```
   Guarda y cierra el archivo. Reemplaza los archivos del mapa original si es necesario:
 
-  ``bash
+  ```bash
   cp ~/f1tenth_ws/src/control_reactivo/mapas/Budapest_original/* ~/f1tenth_ws/src/f1tenth_gym_ros/maps/
+  ```
   Paso 2: Ejecución
   Abre dos terminales distintas.
 
@@ -89,14 +90,14 @@ Esta fase ejecuta la primera versión del algoritmo en el circuito original de B
   cd ~/f1tenth_ws
   source install/setup.bash
   ros2 launch f1tenth_gym_ros gym_bridge_launch.py
-  
+  ```
   Terminal 2 (Lanzar el algoritmo inicial):
 
   ```bash
   cd ~/f1tenth_ws
   source install/setup.bash
   ros2 run control_reactivo ftg_inicial
-
+  ```
 ## 🔴 Fase 2: Obstáculos Fijos y Móviles (FTG Avanzado)
 
 En esta fase, introducimos un mapa modificado con 5 obstáculos fijos y un segundo vehículo actuando como obstáculo dinámico. El algoritmo principal ha sido mejorado con un Filtro Pasa-Bajas y un sistema de telemetría que frena el vehículo automáticamente tras completar 10 vueltas.
@@ -107,21 +108,21 @@ En esta fase, introducimos un mapa modificado con 5 obstáculos fijos y un segun
 
   ```bash
   cp ~/f1tenth_ws/src/control_reactivo/mapas/Budapest_modificado/* ~/f1tenth_ws/src/f1tenth_gym_ros/maps/
-  
+  ```
   #Paso 2: Configurar el modo Multi-Agente
   
   Edita nuevamente el archivo de configuración:
 
   ```bash
   gedit ~/f1tenth_ws/src/f1tenth_gym_ros/config/sim.yaml
-  
+  ```
   Modifica las variables para declarar 2 agentes y establecer sus coordenadas exactas de salida:
-
+  ```
   num_agent: 2
   poses_x: [92.8, 94.8]
   poses_y: [110.8, 110.8]
   poses_theta: [0.0, 0.0]
-  
+  ```
   Guarda y cierra el archivo.
 
   #Paso 3: Ejecución Síncrona
@@ -130,19 +131,19 @@ En esta fase, introducimos un mapa modificado con 5 obstáculos fijos y un segun
 
   Terminal 1 (El Simulador):
 
-  ´´´bash
+  ```bash
   cd ~/f1tenth_ws
   colcon build --symlink-install
   source install/setup.bash
   ros2 launch f1tenth_gym_ros gym_bridge_launch.py
-  
+  ```
   Terminal 2 (Auto Principal - Cerebro FTG Avanzado):
 
   ```bash
   cd ~/f1tenth_ws
   source install/setup.bash
   ros2 run control_reactivo ejecutable_gap
-  
+  ```
   (El vehículo principal se conectará, pero esperará a que el oponente se despierte).
 
   Terminal 3 (Auto Oponente - Cerebro Zombie):
@@ -151,7 +152,7 @@ En esta fase, introducimos un mapa modificado con 5 obstáculos fijos y un segun
   cd ~/f1tenth_ws
   source install/setup.bash
   ros2 run control_reactivo ejecutable_zombie
-  
+  ```
   (Al presionar Enter en esta terminal, comenzará la carrera).
 
 ## 🎥 Demostración en Video
